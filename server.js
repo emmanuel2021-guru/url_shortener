@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const ShortUrl = require('./models/shortUrl');
+const shortId = require('shortid');
 const app = express();
 
 mongoose.connect('mongodb://localhost/urlShortener', {
@@ -17,7 +18,7 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/shortUrls', async (req, res) => {
-  await ShortUrl.create({ full: req.body.fullUrl });
+  await ShortUrl.create({ full: req.body.fullUrl, short: shortId.generate() });
   res.redirect('/');
 });
 

@@ -1,7 +1,7 @@
 {
   "name": "url_shortener",
   "version": "1.0.0",
-  "description": "Shortens long urls",
+  "description": "A simple Node.js application designed to shorten long URLs. This project uses Express for handling HTTP requests, Mongoose for MongoDB interactions, EJS for templating, and ShortId for generating unique short URLs.",
   "main": "index.js",
   "scripts": {
     "devStart": "nodemon server.js"
