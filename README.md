@@ -55,7 +55,7 @@ nodemon: `^3.1.2` - Utility that will monitor for any changes in your source and
 
 Contributions are welcome! If you find any bugs or have any suggestions for improvements, please open an issue on GitHub:
 
-[Submit an Issue](mailto:emmanuellawakin2005@gmail.com)
+[Submit an Issue](https://github.com/emmanuel2021-guru/url_shortener/issues/new/choose)
 
 ## License
 
