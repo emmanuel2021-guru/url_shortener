@@ -18,7 +18,15 @@ app.get('/', async (req, res) => {
 });
 
 app.post('/shortUrls', async (req, res) => {
-  await ShortUrl.create({ full: req.body.fullUrl, short: shortId.generate() });
+  let newShortId = shortId.generate();
+  while (true) {
+    if (!(await ShortUrl.findOne({ short: newShortId }))) {
+      break;
+    } else {
+      newShortId = shortId.generate();
+    }
+  }
+  await ShortUrl.create({ full: req.body.fullUrl, short: newShortId });
   res.redirect('/');
 });
 

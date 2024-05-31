@@ -33,6 +33,7 @@
             <th>Full URL</th>
             <th>Short URL</th>
             <th>Clicks</th>
+            <th>Copy</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -49,10 +50,16 @@
                 href="<%= shortUrl.short %>"
                 target="_blank"
                 onClick="openWindowReload(this)"
+                class="shortLinks"
                 ><%= shortUrl.short %></a
               >
             </td>
             <td><%= shortUrl.clicks %></td>
+            <td>
+              <button onclick="copyLink('<%= shortUrl.short %>')">
+                Copy Link
+              </button>
+            </td>
             <td>
               <a href="/delete/<%= shortUrl.short %>" method="DELETE">Delete</a>
             </td>
@@ -68,6 +75,22 @@
       var href = link.href;
       window.open(href, '_blank');
       document.location.reload(true);
+    }
+
+    function copyLink(shortUrl) {
+      var link = window.location.origin + '/' + shortUrl;
+      var tempInput = document.createElement('input');
+      tempInput.value = link;
+      document.body.appendChild(tempInput);
+
+      tempInput.select();
+      tempInput.setSelectionRange(0, 99999);
+
+      document.execCommand('copy');
+
+      document.body.removeChild(tempInput);
+
+      alert('Link copied: ' + link);
     }
   </script>
 </html>
